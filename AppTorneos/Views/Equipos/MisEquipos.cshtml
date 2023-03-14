@@ -1,0 +1,16 @@
+﻿<h1>Vista msis equipos</h1>
+
+<div> //ESTILO FLEX    
+    <div> //WIDTH 30%        
+        <div>Invitaciones a equipos</div>        
+        <div>Lista de invitaciones</div>        
+        <button onclick="location.href='@Url.Action("CrearEquipo", "Equipos", new {})'">Crear equipo</button>
+    </div>    <div> //WIDTH 70%        
+        <div>Equipos de nombreUsuario</div>        
+        <div>            
+            <a asp-controller="Equipos" asp-action="DetalleEquipo">
+                Enlace de cada equipo
+            </a>        
+        </div>    
+    </div>
+</div>

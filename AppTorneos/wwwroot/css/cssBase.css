@@ -1,0 +1,95 @@
+﻿@font-face {
+    font-family: Genos;
+    src: url(/css/Genos/Genos-VariableFont_wght.ttf);
+}
+
+* {
+    font-family: Genos;
+}
+
+.tituloinicio {
+    color: #909090;
+    font-family: Genos;
+    margin-top: 5%;
+}
+
+.navbar {
+    background-color: #FF6A25;
+    height: 100px;
+}
+
+.logoInicio {
+    margin-right: 0px;
+    height: 100px;
+    position: absolute;
+}
+
+.menu {
+    margin-top: 0px;
+    margin: auto;
+    color: black;
+    font-size: 150%;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.btnInicio {
+    margin-left: 0px
+}
+
+.nav-link {
+}
+
+.botonera {
+    margin-top: 0px;
+}
+
+    .botonera button {
+        border: none;
+        padding: 10px;
+        border-radius: 100px;
+        width: 12%;
+    }
+
+.btnReg {
+    border: none;
+    padding: 10px;
+    border-radius: 100px;
+    width: 12%;
+    color: black;
+    background-color: #FFBD21;
+    font-weight: 500;
+}
+
+.imgHome {
+    width: 100%;
+    margin-top: 100px;
+}
+
+.img1 {
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
