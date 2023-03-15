@@ -7,13 +7,39 @@
     font-family: Genos;
 }
 
-#tituloinicio {
-    color: #909090;
+#divequipos{
+    display:flex;
+
+}
+
+#invitacionesequipos {
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+    align-items:center;
+    width: 50%;
+    text-align:center;
+    margin:0px;
+}
+
+#misequipos {
+    width: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0px;
+}
+
+.divtabla{
+    width:70%;
+}
+/*#tituloinicio {
+    color: #E8E8E8;
     font-family: Genos;
     font-size: 50px;
     margin-top: 15%;
-}
-
+}*/
 .imgHome {
     max-width: 100%;
 }

@@ -4,26 +4,50 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 #region PROCEDURES
-//CREATE OR ALTER PROCEDURE INSERTAREQUIPO_SP(@Nombre nvarchar(50), @Jugador1 int, @Jugador2 int, @Jugador3 int)
+//CREATE OR ALTER PROCEDURE INSERTARUSUARIO_SP(@UsuarioTag NVARCHAR(50), @Contrasenia NVARCHAR(50), @Nombre NVARCHAR(50), @Email NVARCHAR(50))
 //AS
-// INSERT INTO EQUIPO VALUES((SELECT ISNULL(MAX(IdEquipo),0) FROM Equipo)+1, @Nombre, @Jugador1, @Jugador2, @Jugador3)
+// INSERT INTO USUARIO VALUES ((SELECT ISNULL(MAX(IdUsuario),0) FROM USUARIO)+1, @UsuarioTag, @Contrasenia, @Nombre, @Email)
+//GO
+
+//CREATE OR ALTER PROCEDURE BUSCARUSUARIOTAG_SP(@UsuarioTag NVARCHAR(50))
+//AS
+//    SELECT * FROM Usuario WHERE UsuarioTag = @UsuarioTag
+//GO
+
+//CREATE OR ALTER PROCEDURE COMPROBAREMAIL_SP(@Email NVARCHAR(50))
+//AS
+//    SELECT * FROM Usuario WHERE Email = @Email
+//GO
+
+//CREATE OR ALTER PROCEDURE LOGIN_SP(@Email NVARCHAR(50), @Contrasenia NVARCHAR(50))
+//AS
+//    SELECT * FROM Usuario WHERE Email = @Email AND Contrasenia = @Contrasenia
+//GO
+
+//CREATE OR ALTER PROCEDURE DETALLESUSUARIO_SP(@IdUsuario INT)
+//AS
+//    SELECT * FROM Usuario WHERE IdUsuario = @IdUsuario
+//GO
+
+//CREATE OR ALTER PROCEDURE INSERTAREQUIPO_SP(@Nombre nvarchar(50), @Jugador1 int, @Jugador2 int, @Jugador3 int, @ConfirmJug2 int, @ConfirmJug3 int)
+//AS
+// INSERT INTO EQUIPO VALUES((SELECT ISNULL(MAX(IdEquipo),0) FROM Equipo)+1, @Nombre, @Jugador1, @Jugador2, @Jugador3, @ConfirmJug2, @ConfirmJug3)
 //GO
 
 //CREATE OR ALTER PROCEDURE SELECTEQUIPOID_SP(@IDEQUIPO INT)
 //AS
-//	SELECT * FROM Equipo WHERE IdEquipo = @IDEQUIPO
+//    SELECT * FROM Equipo WHERE IdEquipo = @IDEQUIPO
 //GO
 
 //CREATE OR ALTER PROCEDURE EQUIPOSUSER_SP(@IDJUGADOR INT)
 //AS
-//	SELECT * FROM Equipo WHERE Jugador1 = @IDJUGADOR OR Jugador2 = @IDJUGADOR OR Jugador3 = @IDJUGADOR
+//    SELECT * FROM Equipo WHERE Jugador1 = @IDJUGADOR OR Jugador2 = @IDJUGADOR OR Jugador3 = @IDJUGADOR
 //GO
 
 //CREATE OR ALTER PROCEDURE DELETEEQUIPO_SP(@IDEQUIPO INT)
 //AS
-//    DELETE FROM Equipo WHERE IdEquipo = @IDEQUIPO
+// DELETE FROM Equipo WHERE IdEquipo = @IDEQUIPO
 //GO
-
 #endregion
 
 namespace AppTorneos.Repositories

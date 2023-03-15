@@ -1,16 +1,55 @@
-﻿<h1>Vista msis equipos</h1>
-
-<div> //ESTILO FLEX    
-    <div> //WIDTH 30%        
-        <div>Invitaciones a equipos</div>        
-        <div>Lista de invitaciones</div>        
-        <button onclick="location.href='@Url.Action("CrearEquipo", "Equipos", new {})'">Crear equipo</button>
-    </div>    <div> //WIDTH 70%        
-        <div>Equipos de nombreUsuario</div>        
-        <div>            
-            <a asp-controller="Equipos" asp-action="DetalleEquipo">
-                Enlace de cada equipo
-            </a>        
-        </div>    
+﻿<h1 class="tituloinicio">Mis equipos</h1>
+<hr style="width:50%;margin:auto;color:black; border-top:2px solid"/>
+<div id="divequipos" class="botonera"> 
+    <div id="invitacionesequipos">        
+        <div>
+            <h2>Invitaciones a equipos</h2>
+        </div>
+        <div class="divtabla">
+            <table class="table">
+                <tr class="thead">
+                    <th>Nombre</th>
+                    <th>Aceptar/Denegar</th>
+                </tr>
+                <tbody class="tbody">
+                    <tr>
+                        <td>klk</td>
+                        <td>conklk</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button type="button" class="btnReg w-50 mx-1"" onclick="location.href='@Url.Action("CrearEquipo", "Equipos", new {})'">Crear equipo</button>
+    </div>
+    <div id="misequipos">     
+        <div>
+            <h2>Equipos de nombreUsuario</h2>
+        </div>
+        <div class="divtabla">
+            <table class="table">
+                <tr class="thead">
+                    <th>Nombre</th>
+                    <th>Detalles</th>
+                </tr>
+                <tbody class="tbody">
+                    <tr>
+                        <td>klk</td>
+                        <td>
+                            <a asp-controller="Equipos" asp-action="DetalleEquipo">
+                                Enlace de cada equipo
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>klk</td>
+                        <td>
+                            <a asp-controller="Equipos" asp-action="DetalleEquipo">
+                                Enlace de cada equipo
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
