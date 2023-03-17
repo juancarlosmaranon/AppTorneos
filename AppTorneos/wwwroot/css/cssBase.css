@@ -274,7 +274,12 @@ h1 {
     margin-bottom: 10%;
     margin-top: -1%;
 }
-
+/*
+.divtabla{
+    width:700px;
+    gap:;
+}
+*/
 .cols {
     display: -webkit-box;
     display: -ms-flexbox;
