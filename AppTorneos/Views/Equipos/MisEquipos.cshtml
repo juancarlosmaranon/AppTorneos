@@ -1,55 +1,128 @@
-﻿<h1 class="tituloinicio">Mis equipos</h1>
-<hr style="width:50%;margin:auto;color:black; border-top:2px solid"/>
-<div id="divequipos" class="botonera"> 
-    <div id="invitacionesequipos">        
-        <div>
-            <h2>Invitaciones a equipos</h2>
-        </div>
-        <div class="divtabla">
-            <table class="table">
-                <tr class="thead">
-                    <th>Nombre</th>
-                    <th>Aceptar/Denegar</th>
-                </tr>
-                <tbody class="tbody">
-                    <tr>
-                        <td>klk</td>
-                        <td>conklk</td>
+﻿<div class="wrapper2">
+    <h1 class="tituloinicio">Mis equipos</h1>
+    <hr style="width:50%;margin:auto;color:black; border-top:2px solid"/>
+    <div id="divequipos" class="botonera"> 
+    
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <div id="invitacionesequipos">        
+            <div>
+                <h2>Invitaciones a equipos</h2>
+            </div>
+            <div class="divtabla tablascroll">
+                <table class="table">
+                    <tr class="thead">
+                        <th>Nombre</th>
+                        <th>Aceptar/Denegar</th>
                     </tr>
-                </tbody>
-            </table>
+                    <tbody class="tbody">
+                        <tr>
+                            <td class="tdEquipos">klk</td>
+                            <td class="tdEquipos">conklk</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <button type="button" id="toggleEditor" class="btnReg mx-1" style="width:120px" @*onclick="location.href='@Url.Action("CrearEquipo", "Equipos", new {})'"*@>Crear equipo</button>
+            <div style="padding:20px;width:70% ;background-color:#242424; display:none" id="crearEquipo">
+                <label class="labelEquipo">Nombre de Equipo</label>
+                <input type="text" name="nombreEquipo" class="inputEquipo form-control"/>
+                <label class="labelEquipo">Jugador 2</label>
+                <input type="text" name="jugador2" class="inputEquipo form-control"/>
+                <label class="labelEquipo">Jugador 3</label>
+                <input type="text" name="jugador3" class="inputEquipo form-control"/>
+                <button type="button" class="btn btn-success" style="width:120px; height:40px; margin-top:20px">Crear</button>
+            </div>
+            <script>
+                $(document).ready(function() {
+                    $('#toggleEditor').click(function() {
+                        $('#crearEquipo').toggle('fast');
+                    })
+                })
+            </script>
         </div>
-        <button type="button" class="btnReg w-50 mx-1"" onclick="location.href='@Url.Action("CrearEquipo", "Equipos", new {})'">Crear equipo</button>
-    </div>
-    <div id="misequipos">     
-        <div>
-            <h2>Equipos de nombreUsuario</h2>
-        </div>
-        <div class="divtabla">
-            <table class="table">
-                <tr class="thead">
-                    <th>Nombre</th>
-                    <th>Detalles</th>
-                </tr>
-                <tbody class="tbody">
-                    <tr>
-                        <td>klk</td>
-                        <td>
-                            <a asp-controller="Equipos" asp-action="DetalleEquipo">
-                                Enlace de cada equipo
-                            </a>
-                        </td>
+        <div id="misequipos">     
+            <div>
+                <h2>Equipos de Usuario</h2>
+            </div>
+            <div class="divtabla tablascroll2">
+                <table class="table">
+                    <tr class="thead">
+                        <th>Nombre</th>
+                        <th>Detalles</th>
                     </tr>
-                    <tr>
-                        <td>klk</td>
-                        <td>
-                            <a asp-controller="Equipos" asp-action="DetalleEquipo">
-                                Enlace de cada equipo
-                            </a>
-                        </td>
+                    <tbody class="tbody">
+                        <tr>
+                            <td class="tdEquipos">klk</td>
+                            <td class="tdEquipos">
+                                <a type="button" class="btn btnReg toggleEditor2">
+                                    Ir a equipo
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdEquipos">klk</td>
+                            <td class="tdEquipos">
+                                <a type="button" class="btn btnReg toggleEditor2">
+                                    Ir a equipo
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdEquipos">klk</td>
+                            <td class="tdEquipos">
+                                <a type="button" class="btn btnReg toggleEditor2">
+                                    Ir a equipo
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdEquipos">klk</td>
+                            <td class="tdEquipos">
+                                <a type="button" class="btn btnReg toggleEditor2">
+                                    Ir a equipo
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="detallesEquipo">
+                <h4 class="">Equipo PEPE</h4>
+                <table class="table">
+                    <tr class="thead">
+                        <th>Jugadores</th>
+                        <th>Ligas</th>
+                        <th>Ganadas</th>
+                        <th>Perdidas</th>
+                        <th>Jugando</th>
                     </tr>
-                </tbody>
-            </table>
+                    <tbody class="tbody">
+                        <tr>
+                            <td class="tdEquipos">jc - fer - klk</td>
+                            <td class="tdEquipos">
+                                7
+                            </td>
+                            <td class="tdEquipos">
+                                3
+                            </td>
+                            <td class="tdEquipos">
+                                2
+                            </td>
+                            <td class="tdEquipos">
+                                2
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <script>
+                $(document).ready(function() {
+                    $('.toggleEditor2').click(function() {
+                        $('#detallesEquipo').toggle('fast');
+                    })
+                })
+            </script>
         </div>
     </div>
 </div>
+
