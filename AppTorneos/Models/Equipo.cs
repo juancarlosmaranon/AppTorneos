@@ -21,5 +21,20 @@ namespace AppTorneos.Models
 
         [Column("Jugador3")]
         public int Jugador3 { get; set; }
+
+        [Column("ConfirmJug2")]
+        public int ConfirmJug2 { get; set; }
+
+        [Column("ConfirmJug3")]
+        public int ConfirmJug3 { get; set; }
+
+        [Column("GANADOS")]
+        public int Ganados { get; set; }
+
+        [Column("PERDIDOS")]
+        public int Perdidos { get; set; }
+
+        [Column("EMPATES")]
+        public int Empates { get; set; }
     }
 }

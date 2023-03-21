@@ -29,9 +29,9 @@ using Microsoft.EntityFrameworkCore;
 //    SELECT * FROM Usuario WHERE IdUsuario = @IdUsuario
 //GO
 
-//CREATE OR ALTER PROCEDURE INSERTAREQUIPO_SP(@Nombre nvarchar(50), @Jugador1 int, @Jugador2 int, @Jugador3 int, @ConfirmJug2 int, @ConfirmJug3 int)
+//CREATE OR ALTER PROCEDURE INSERTAREQUIPO_SP(@Nombre nvarchar(50), @Jugador1 int, @Jugador2 int, @Jugador3 int)
 //AS
-// INSERT INTO EQUIPO VALUES((SELECT ISNULL(MAX(IdEquipo),0) FROM Equipo)+1, @Nombre, @Jugador1, @Jugador2, @Jugador3, @ConfirmJug2, @ConfirmJug3)
+// INSERT INTO EQUIPO VALUES((SELECT ISNULL(MAX(IdEquipo),0) FROM Equipo)+1, @Nombre, @Jugador1, @Jugador2, @Jugador3, -1, -1, 0, 0, 0)
 //GO
 
 //CREATE OR ALTER PROCEDURE SELECTEQUIPOID_SP(@IDEQUIPO INT)
@@ -102,6 +102,24 @@ namespace AppTorneos.Repositories
             SqlParameter pamidequipo =
                 new SqlParameter("@IDEQUIPO", idequipo);
             this.context.Database.ExecuteSqlRaw(sql, pamidequipo);
+        }
+
+        public void ConfirmaInvitacion(int idequipo, bool confirmacion2, bool confirmacion3)
+        {
+            Equipo eq = this.SelectEquipo(idequipo);
+
+            if (eq != null)
+            {
+                if (confirmacion2)
+                {
+                    eq.ConfirmJug2 = 1;
+                }else if (confirmacion3)
+                {
+                    eq.ConfirmJug3 = 1;
+                }
+            }
+
+            this.context.SaveChanges();
         }
     }
 }

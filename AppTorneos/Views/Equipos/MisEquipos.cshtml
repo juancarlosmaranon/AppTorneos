@@ -1,4 +1,11 @@
-﻿<div class="wrapper2">
+﻿@model List<Equipo>
+@{
+    User usuario = Context.Session.GetObject<User>("USUARIO");
+    bool pendientes = (bool)ViewData["PENDIENTES"];
+
+}
+
+<div class="wrapper2">
     <h1 class="tituloinicio">Mis equipos</h1>
     <hr style="width:50%;margin:auto;color:black; border-top:2px solid"/>
     <div id="divequipos" class="botonera"> 
@@ -9,28 +16,58 @@
                 <h2>Invitaciones a equipos</h2>
             </div>
             <div class="divtabla tablascroll">
-                <table class="table">
-                    <tr class="thead">
-                        <th>Nombre</th>
-                        <th>Aceptar/Denegar</th>
-                    </tr>
-                    <tbody class="tbody">
-                        <tr>
-                            <td class="tdEquipos">klk</td>
-                            <td class="tdEquipos">conklk</td>
+                @if(pendientes){
+                    <table class="table">
+                        <tr class="thead">
+                            <th>Nombre</th>
+                            <th>Aceptar/Denegar</th>
                         </tr>
-                    </tbody>
-                </table>
+                        <tbody class="tbody">
+                            @foreach (Equipo eq in Model)
+                            {
+                                @if(eq.Jugador1 != usuario.IdUsuario){
+                                    @if(eq.Jugador2 == usuario.IdUsuario && eq.ConfirmJug2 == -1){
+                                        <tr>
+                                            <td class="tdEquipos">@eq.Nombre</td>
+                                            <td class="tdEquipos">
+                                                <a asp-controller="Equipos" asp-action="ConfirmaEquipo" asp-route-confirmacion2="true" asp-route-confirmacion3="false" asp-route-idequipo="@eq.IdEquipo">Aceptar</a>
+                                                <a asp-controller="Equipos" asp-action="BorraEquipo" asp-route-idequipo="@eq.IdEquipo">Denegar</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                    else if (eq.Jugador3 == usuario.IdUsuario && eq.ConfirmJug3 == -1)
+                                    {
+                                        <tr>
+                                            <td class="tdEquipos">@eq.Nombre</td>
+                                            <td class="tdEquipos">
+                                                <a asp-controller="Equipos" asp-action="ConfirmaEquipo" asp-route-confirmacion2="false" asp-route-confirmacion3="true" asp-route-idequipo="@eq.IdEquipo">Aceptar</a>
+                                                <a asp-controller="Equipos" asp-action="BorraEquipo" asp-route-idequipo="@eq.IdEquipo">Denegar</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <h3>Sin invitaciones pendientes</h3>
+                }
             </div>
             <button type="button" id="toggleEditor" class="btnReg mx-1" style="width:120px" @*onclick="location.href='@Url.Action("CrearEquipo", "Equipos", new {})'"*@>Crear equipo</button>
-            <div style="padding:20px;width:70% ;background-color:#242424; display:none" id="crearEquipo">
-                <label class="labelEquipo">Nombre de Equipo</label>
-                <input type="text" name="nombreEquipo" class="inputEquipo form-control"/>
-                <label class="labelEquipo">Jugador 2</label>
-                <input type="text" name="jugador2" class="inputEquipo form-control"/>
-                <label class="labelEquipo">Jugador 3</label>
-                <input type="text" name="jugador3" class="inputEquipo form-control"/>
-                <button type="button" class="btn btn-success" style="width:120px; height:40px; margin-top:20px">Crear</button>
+            <div style="padding:20px ;background-color:#242424; display:none" id="crearEquipo">
+                
+                <form method="post">
+                    <label class="labelEquipo">Nombre de Equipo</label>
+                    <input type="text" name="nombreEquipo" class="inputEquipo form-control" />
+                    <label class="labelEquipo">Jugador 2</label>
+                    <input type="text" name="jugador2" class="inputEquipo form-control" />
+                    <label class="labelEquipo">Jugador 3</label>
+                    <input type="text" name="jugador3" class="inputEquipo form-control" />
+                    <button type="submit" class="btn btn-success" style="width:120px; height:40px; margin-top:20px">Crear</button>
+                </form>
+                
             </div>
             <script>
                 $(document).ready(function() {
@@ -51,38 +88,29 @@
                         <th>Detalles</th>
                     </tr>
                     <tbody class="tbody">
-                        <tr>
-                            <td class="tdEquipos">klk</td>
-                            <td class="tdEquipos">
-                                <a type="button" class="btn btnReg toggleEditor2">
-                                    Ir a equipo
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tdEquipos">klk</td>
-                            <td class="tdEquipos">
-                                <a type="button" class="btn btnReg toggleEditor2">
-                                    Ir a equipo
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tdEquipos">klk</td>
-                            <td class="tdEquipos">
-                                <a type="button" class="btn btnReg toggleEditor2">
-                                    Ir a equipo
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tdEquipos">klk</td>
-                            <td class="tdEquipos">
-                                <a type="button" class="btn btnReg toggleEditor2">
-                                    Ir a equipo
-                                </a>
-                            </td>
-                        </tr>
+                        @foreach (Equipo eq in Model)
+                        {
+
+                            @if (eq.Jugador1 == usuario.IdUsuario || (eq.ConfirmJug2 == 1 && usuario.IdUsuario == eq.Jugador2) || (eq.ConfirmJug3 == 1 && usuario.IdUsuario == eq.Jugador3))
+                            {
+                                <tr>
+                                    <td class="tdEquipos">@eq.Nombre</td>
+                                    <td class="tdEquipos">
+                                        @if (eq.ConfirmJug2 == 1 && eq.ConfirmJug3 == 1)
+                                        {
+                                            <button type="button" class="btn btnReg toggleEditor2" onclick="verDetalles("@eq")">
+                                                Detalles 
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            <h4>Sin confirmar</h4>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        
                     </tbody>
                 </table>
             </div>

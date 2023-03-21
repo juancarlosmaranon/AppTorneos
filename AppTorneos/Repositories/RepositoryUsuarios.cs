@@ -42,5 +42,10 @@ namespace AppTorneos.Repositories
             User usuario = consulta.AsEnumerable().FirstOrDefault();
             return usuario;
         }
+
+        public int FindUsuarioXTag(string tag)
+        {
+            return this.context.Usuarios.Where(x => x.UsuarioTag == tag).AsEnumerable().FirstOrDefault().IdUsuario;
+        }
     }
 }

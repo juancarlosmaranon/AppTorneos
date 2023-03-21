@@ -219,23 +219,26 @@ body {
 
 #divequipos {
     margin-top:1rem;
+    width:100%;
 }
 
 #invitacionesequipos {
-    display: flex;
+    display: block;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 600px;   
+    width: 700px;
+    margin-right:5%;
 }
 
 #misequipos {
-    display: flex;
+    display: block;
     flex-direction: column;
     align-items: center;
     text-align: center;
     flex-wrap: wrap;
-    width:600px;
+    width:700px;
+    margin-left:5%;
 }
 
 
@@ -274,12 +277,11 @@ h1 {
     margin-bottom: 10%;
     margin-top: -1%;
 }
-/*
-.divtabla{
-    width:700px;
-    gap:;
-}
-*/
+
+/*.divtabla{
+    width:900px;
+}*/
+
 .cols {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -473,12 +475,13 @@ h1 {
 
 #crearEquipo {
     border-radius: 15px;
+    width:100%;
 }
 
 #detallesEquipo {
     display: none;
     margin-top: 40px;
-    width:600px;
+    width:700px;
 }
 
 .btnDetalles{

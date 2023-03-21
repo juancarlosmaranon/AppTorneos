@@ -11,5 +11,7 @@ namespace AppTorneos.Data
         public DbSet<User> Usuarios { get; set; }
         
         public DbSet<Equipo> Equipos { get; set; }
+
+        public DbSet<Liga> Ligas { get; set; }
     }
 }
