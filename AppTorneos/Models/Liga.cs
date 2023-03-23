@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿    using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AppTorneos.Models
@@ -14,9 +14,12 @@ namespace AppTorneos.Models
         public string Nombre { get; set;}
 
         [Column("FechaInicio")]
-        public DateTime FechaInicio { get; set; }
+        public DateTime? FechaInicio { get; set; }
 
         [Column("FechaFin")]
-        public DateTime FechaFin { get; set; }
+        public DateTime? FechaFin { get; set; }
+
+        [Column("Estado")]
+        public int Estado { get; set; }
     }
 }

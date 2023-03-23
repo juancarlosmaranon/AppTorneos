@@ -3,6 +3,8 @@
     src: url(/css/Genos/Genos-VariableFont_wght.ttf);
 }
 
+/*GENERAL*/
+
 * {
     font-family: Genos !important;
     color: #E8E8E8;
@@ -40,221 +42,6 @@ body {
     margin: 0 auto;
     margin-bottom: 10%;
     margin-top: -1%;
-}
-
-/*TABLAS*/
-
-.table {
-    width: 100%;
-    margin: auto;
-    border-collapse: collapse;
-    font-weight: 400;
-    font-size: 15px;
-    color: #E8E8E8;
-    overflow-x: auto;
-    border-radius: 30px;
-}
-
-.tablascroll {
-    overflow-y: scroll;
-}
-
-.tablascroll2 {
-    height: 250px;
-    overflow-y: scroll;
-}
-
-::-webkit-scrollbar{
-    width:7px;
-}
-
-::-webkit-scrollbar-thumb:hover{
-    background:#555;
-}
-
-::-webkit-scrollbar-track{
-    visibility:hidden;
-}
-
-::-webkit-scrollbar-thumb{
-    background: #888;
-    border-radius:5px;
-}
-
-.thead {
-    font-weight: bold;
-    font-size: 18px;
-    position: sticky;
-    top: 0px;
-    background-color: #242424;
-}
-
-    .thead > th {
-        border: 0px !important;
-        padding: 0px;
-        height: fit-content;
-        min-width: 130px;
-        color: #E8E8E8;
-        border: 0px !important;
-    }
-
-    .thead > :first-child {
-        border-radius: 15px 0 0 15px;
-    }
-
-    .thead > :last-child {
-        border-radius: 0 15px 15px 0;
-    }
-
-.tbody > tr {
-    height: 30px;
-    border:0px
-}
-
-    .tbody > tr > td {
-        border: 0px;
-        max-width: 250px;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-    }
-
-    .tbody > tr:nth-child(odd) {
-        border: 0px;
-        background-color: rgba(58, 58, 58, 0.4);
-        border-radius: 15px;
-    }
-
-    .tbody > tr:nth-child(even) {
-        border: 0px;
-        background-color: #4F4E4E;
-        border-radius: 15px;
-    }
-
-    .tbody > tr > td:first-child {
-        border-radius: 15px 0 0 15px;
-    }
-
-    .tbody > tr > td:last-child {
-        border-radius: 0 15px 15px 0;
-    }
-
-.logoInicio {
-    margin-right: 0px;
-    height: 100px;
-    position: absolute;
-}
-
-.menu {
-    margin-top: 0px;
-    margin: auto;
-    color: black;
-    font-size: 150%;
-    font-weight: 500;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.btnInicio {
-    margin-left: 0px
-}
-
-.botonera button {
-    border: none;
-    padding: 10px;
-    border-radius: 100px;
-    /*width: 12%;*/
-}
-
-.trMenuLigas > td{
-    text-align: center;
-    vertical-align:middle;
-    flex-direction:row;
-    justify-content:center;
-}
-
-.btnReg {
-    border: none;
-    padding: 10px;
-    border-radius: 100px;
-    width: 12%;
-    color: black;
-    background-color: #FFBD21;
-    font-weight: 500;
-    width: 8em;
-    margin: 1em;
-}
-
-#btnCancelar {
-    background-color: #F01919 !important;
-}
-
-.estilomodal {
-    background-color: #494848;
-    color: #E8E8E8;
-}
-
-.imgHome {
-    width: 100%;
-    margin-top: 100px;
-}
-
-.img1 {
-    width: 100%;
-
-}
-
-.footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-#divequipos {
-    margin-top:1rem;
-    width:100%;
-}
-
-#invitacionesequipos {
-    display: block;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 700px;
-    margin-right:5%;
-}
-
-#misequipos {
-    display: block;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    flex-wrap: wrap;
-    width: 700px;
-    margin-left: 5%;
-}
-
-.botonera {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.modalBody {
-    background-color: #434242;
-    border-radius: 20px;
-}
-
-h1 {
-    font-size: 2.5rem;
-    font-family: 'Montserrat';
-    font-weight: normal;
-    color: #444;
-    text-align: center;
-    margin: 2rem 0;
 }
 
 /*MENU INICIO*/
@@ -415,6 +202,197 @@ h1 {
     font-weight: 300;
 }
 
+.logoInicio {
+    margin-right: 0px;
+    height: 100px;
+    position: absolute;
+}
+
+.menu {
+    margin-top: 0px;
+    margin: auto;
+    color: black;
+    font-size: 150%;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.btnInicio {
+    margin-left: 0px
+}
+
+.imgHome {
+    width: 100%;
+    margin-top: 100px;
+}
+
+.img1 {
+    width: 100%;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/*TABLAS*/
+
+.table {
+    width: 100%;
+    margin: auto;
+    border-collapse: collapse;
+    font-weight: 400;
+    font-size: 15px;
+    color: #E8E8E8;
+    overflow-x: auto;
+    border-radius: 30px;
+}
+
+.tablascroll {
+    overflow-y: scroll;
+}
+
+.tablascroll2 {
+    height: 250px;
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar{
+    width:7px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#555;
+}
+
+::-webkit-scrollbar-track{
+    visibility:hidden;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #888;
+    border-radius:5px;
+}
+
+.thead {
+    font-weight: bold;
+    font-size: 18px;
+    position: sticky;
+    top: 0px;
+    background-color: #242424;
+}
+
+    .thead > th {
+        border: 0px !important;
+        padding: 0px;
+        height: fit-content;
+        min-width: 130px;
+        color: #E8E8E8;
+        border: 0px !important;
+    }
+
+    .thead > :first-child {
+        border-radius: 15px 0 0 15px;
+    }
+
+    .thead > :last-child {
+        border-radius: 0 15px 15px 0;
+    }
+
+.tbody > tr {
+    height: 30px;
+    border:0px
+}
+
+    .tbody > tr > td {
+        border: 0px;
+        max-width: 250px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .tbody > tr:nth-child(odd) {
+        border: 0px;
+        background-color: rgba(58, 58, 58, 0.4);
+        border-radius: 15px;
+    }
+
+    .tbody > tr:nth-child(even) {
+        border: 0px;
+        background-color: #4F4E4E;
+        border-radius: 15px;
+    }
+
+    .tbody > tr > td:first-child {
+        border-radius: 15px 0 0 15px;
+    }
+
+    .tbody > tr > td:last-child {
+        border-radius: 0 15px 15px 0;
+    }
+
+.botonera button {
+    border: none;
+    padding: 10px;
+    border-radius: 100px;
+    /*width: 12%;*/
+}
+
+.trMenuLigas > td{
+    text-align: center;
+    vertical-align:middle;
+    flex-direction:row;
+    justify-content:center;
+}
+
+.btnReg {
+    border: none;
+    padding: 10px;
+    border-radius: 100px;
+    width: 12%;
+    color: black;
+    background-color: #FFBD21;
+    font-weight: 500;
+    width: 8em;
+    margin: 1em;
+}
+
+#btnCancelar {
+    background-color: #F01919 !important;
+}
+
+.estilomodal {
+    background-color: #494848;
+    color: #E8E8E8;
+}
+
+.botonera {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.modalBody {
+    background-color: #434242;
+    border-radius: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-family: 'Montserrat';
+    font-weight: normal;
+    color: #444;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+
 /*EQUIPOS*/
 
 .inputEquipo {
@@ -447,6 +425,30 @@ h1 {
 
 .tdEquipos{
     vertical-align:baseline;
+}
+
+#divequipos {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+#invitacionesequipos {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 700px;
+    margin-right: 5%;
+}
+
+#misequipos {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    width: 700px;
+    margin-left: 5%;
 }
 
 /*LIGAS*/
@@ -549,4 +551,13 @@ h1 {
 
 #crearLiga {
     margin-top: 20px;
+    border-radius:50px;
+}
+
+.tableAceptados {
+    width: 600px;
+}
+
+.elmodal{
+    display:block;
 }

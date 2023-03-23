@@ -38,7 +38,8 @@
             <div class="modal fade" id="myModal">
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content modalBody">
-
+                        <form method="post">
+                        <input type="hidden" name="accion" value="iniciarLiga"/>
                         <!-- Modal Header -->
                         <div class="modal-header">
                             <h4 class="modal-title">Nombre de la Liga</h4>
@@ -47,29 +48,41 @@
 
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <div>
+                            <div class="elmodal">
                                 <h5>Equipos solicitantres</h5>
                                 <table class="table">
-                        <tr class="thead">
-                            <th>Nombre</th>
-                            <th>Aceptar / Rechazar</th>
-                        </tr>
-                        <tbody class="tbody">
-                            <tr class="thead trMenuLigas">
-                                <td>Nombre</td>
-                                <td class="tdEquipos">
-                                    <a asp-controller="" asp-action="" asp-route-idequipo="" class="btn btn-success">Aceptar</a>
-                                    <a asp-controller="" asp-action="" asp-route-idequipo="" class="btn btn-danger">Denegar</a>
-                                </td>
-                            </tr>     
-                        </tbody>
-                    </table>
+                                    <tr class="thead">
+                                        <th>Nombre</th>
+                                        <th>Aceptar / Rechazar</th>
+                                    </tr>
+                                    <tbody class="tbody">
+                                        <tr class="thead trMenuLigas">
+                                            <td class="tdEquipos">Nombre</td>
+                                            <td class="tdEquipos">
+                                                <a asp-controller="" asp-action="" asp-route-idequipo="" class="btn btn-success">Aceptar</a>
+                                                <a asp-controller="" asp-action="" asp-route-idequipo="" class="btn btn-danger">Denegar</a>
+                                            </td>
+                                        </tr>     
+                                    </tbody>
+                                </table>
                             </div>
-                            <div>
+                            <div style="margin-top:10px; width:100%;">
                                 <h5>Equipos aceptados</h5>
+                                <table class="table tableAceptados">
+                                    <tr class="thead">
+                                        <th>Nombre Equipo</th>
+                                        <th>Eliminar Equipo</th>
+                                    </tr>
+                                    <tbody class="tbody">
+                                        <tr class="thead trMenuLigas">
+                                           <td>yeye</td>
+                                            <td><a asp-controller="" asp-action="" asp-route-idequipo="" class="btn btn-danger">Eliminar</a></td>
+                                        </tr>     
+                                    </tbody>
+                                </table> 
                             </div>
                             <div>
-                                <form method="post">
+                                
                                     <div>
                                         <label>Fecha I</label>
                                         <input type="datetime" />
@@ -82,15 +95,18 @@
                                         <label>Numero de equipos</label>
                                         <input type="number" />
                                     </div>
-                                </form>
+                                    
+                                
                             </div>
                         </div>
 
                         <!-- Modal footer -->
                         <div class="modal-footer">
+                            <button type="submit" class="btn btn-success" style="width:120px; height:40px; margin-top:20px">Crear</button>
                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            
                         </div>
-
+                        </form>
                     </div>
                 </div>
             </div>
@@ -118,8 +134,9 @@
 
                 <form method="post">
                     <label class="labelEquipo">Nombre de Liga</label>
-                    <input type="text" name="nombreLiga" class="inputEquipo form-control" />
-                    <button type="submit" class="btn btn-success" style="width:120px; height:40px; margin-top:20px">Crear</button>
+                    <input type="hidden" name="accion" value="CrearLiga"/>
+                    <input type="text" name="nombre" class="inputEquipo form-control" />
+                    <button type="submit" class="btn btn-success" style="width:120px; height:40px; margin-top:20px">Crear Liga</button>
                 </form>
 
             </div>

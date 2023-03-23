@@ -13,6 +13,7 @@ string connectionString =
     builder.Configuration.GetConnectionString("TorneoBBDD");
 builder.Services.AddTransient<RepositoryUsuarios>();
 builder.Services.AddTransient<RepositoryEquipos>();
+builder.Services.AddTransient<RepositoryLigas>();
 builder.Services.AddDbContext<BSTournamentContext>
     (options => options.UseSqlServer(connectionString));
 
