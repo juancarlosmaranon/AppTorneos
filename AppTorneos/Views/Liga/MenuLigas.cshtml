@@ -8,34 +8,36 @@
             <div>
                 <h2>Buscador de ligas</h2>
             </div>
-            <div class="divtabla tablascroll">
+            <div class="divtabla">
                 <div class="buscador">
-                    <input type="text"/>
-                    <button type="btnReg" id="toggleEditor">Busc</button>
+                    <input type="text" class="inputLiga"/>
+                    <button type="button" class="btn btnReg btnLiga">Buscar Liga</button>
                 </div>
-                
-                <table class="table">
-                    <tr class="thead">
-                        <th>Nombre</th>
-                        <th>Activo</th>
-                        <th>deta</th>
-                    </tr>
-                    <tbody class="tbody">
+                <h2>Ligas</h2>
+                <div class="tablascroll2">
+                    <table class="table">
                         <tr class="thead">
-                            <td>Nombre</td>
-                            <td>Activo</td>
-                            <td>
-                                <button type="button" class="btn btnReg btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-                                    Open modal
-                                </button>
-                            </td>
-                        </tr>     
-                    </tbody>
-                </table>
+                            <th>Nombre</th>
+                            <th>Activo</th>
+                            <th>deta</th>
+                        </tr>
+                        <tbody class="tbody">
+                            <tr class="thead trMenuLigas">
+                                <td>Nombre</td>
+                                <td>Activo</td>
+                                <td>
+                                    <button type="button" class="btn btnReg btnLiga" data-bs-toggle="modal" data-bs-target="#myModal">
+                                        Open modal
+                                    </button>
+                                </td>
+                            </tr>     
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="modal fade" id="myModal">
                 <div class="modal-dialog modal-xl">
-                    <div class="modal-content bg-black">
+                    <div class="modal-content modalBody">
 
                         <!-- Modal Header -->
                         <div class="modal-header">
@@ -47,20 +49,21 @@
                         <div class="modal-body">
                             <div>
                                 <h5>Equipos solicitantres</h5>
-                                <table class="table tablaLigas table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>nombre</th>
-                                            <th>aceptar / rechazar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>nombre</td>
-                                            <td>aceptar / rechazar</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <table class="table">
+                        <tr class="thead">
+                            <th>Nombre</th>
+                            <th>Aceptar / Rechazar</th>
+                        </tr>
+                        <tbody class="tbody">
+                            <tr class="thead trMenuLigas">
+                                <td>Nombre</td>
+                                <td class="tdEquipos">
+                                    <a asp-controller="" asp-action="" asp-route-idequipo="" class="btn btn-success">Aceptar</a>
+                                    <a asp-controller="" asp-action="" asp-route-idequipo="" class="btn btn-danger">Denegar</a>
+                                </td>
+                            </tr>     
+                        </tbody>
+                    </table>
                             </div>
                             <div>
                                 <h5>Equipos aceptados</h5>
@@ -94,33 +97,28 @@
         </div>
         <div id="misligas">
             <div>
-                <h2>Equipos de Usuario</h2>
+                <h2>Filtrar por opciones</h2>
             </div>
             <div class="divfiltros">
-                <h4>Filtrar por opciones</h4>
-                <div>
-                    <input type="checkbox" name="filtros"/>
-                    <span>Terminados</span>
+                <div class="losradios">
+                    <span>Terminadas</span>
+                    <input type="radio" name="filtros" class="radio"/>
                 </div>
-                <div>
-                    <input type="checkbox" name="filtros"/>
-                    <span>activo</span>
+                <div class="losradios">
+                    <span>Activas</span>
+                    <input type="radio" name="filtros" class="radio"/>
                 </div>
-                <div>
-                    <input type="checkbox" name="filtros"/>
-                    <span>pendientre</span>
+                <div class="losradios">
+                    <span>Pendiente</span>
+                    <input type="radio" name="filtros" class="radio"/>
                 </div>
             </div>
-            <button type="button" id="toggleEditor" class="btnReg mx-1" style="width:120px">Filtrar</button>
-            <div style="padding:20px ;background-color:#242424; display:none" id="crearEquipo">
+            <button type="button" id="toggleEditor" class="btn btnReg btnLiga mx-1" style="width:120px">Filtrar</button>
+            <div style="padding:20px ;background-color:#242424; display:none" id="crearLiga">
 
                 <form method="post">
-                    <label class="labelEquipo">Nombre de Equipo</label>
-                    <input type="text" name="nombreEquipo" class="inputEquipo form-control" />
-                    <label class="labelEquipo">Jugador 2</label>
-                    <input type="text" name="jugador2" class="inputEquipo form-control" />
-                    <label class="labelEquipo">Jugador 3</label>
-                    <input type="text" name="jugador3" class="inputEquipo form-control" />
+                    <label class="labelEquipo">Nombre de Liga</label>
+                    <input type="text" name="nombreLiga" class="inputEquipo form-control" />
                     <button type="submit" class="btn btn-success" style="width:120px; height:40px; margin-top:20px">Crear</button>
                 </form>
 
@@ -128,7 +126,7 @@
             <script>
                 $(document).ready(function () {
                     $('#toggleEditor').click(function () {
-                        $('#crearEquipo').toggle('fast');
+                        $('#crearLiga').toggle('fast');
                     })
                 })
             </script>
