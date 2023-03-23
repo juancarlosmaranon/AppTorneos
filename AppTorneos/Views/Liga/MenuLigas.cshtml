@@ -1,0 +1,137 @@
+﻿<div class="wrapper">
+    <h1 class="tituloinicio">Mis equipos</h1>
+    <hr style="width:50%;margin:auto;color:black; border-top:2px solid" />
+    <div id="divequipos" class="botonera">
+
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <div id="invitacionesligas">
+            <div>
+                <h2>Buscador de ligas</h2>
+            </div>
+            <div class="divtabla tablascroll">
+                <div class="buscador">
+                    <input type="text"/>
+                    <button type="btnReg" id="toggleEditor">Busc</button>
+                </div>
+                
+                <table class="table">
+                    <tr class="thead">
+                        <th>Nombre</th>
+                        <th>Activo</th>
+                        <th>deta</th>
+                    </tr>
+                    <tbody class="tbody">
+                        <tr class="thead">
+                            <td>Nombre</td>
+                            <td>Activo</td>
+                            <td>
+                                <button type="button" class="btn btnReg btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                                    Open modal
+                                </button>
+                            </td>
+                        </tr>     
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content bg-black">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Nombre de la Liga</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div>
+                                <h5>Equipos solicitantres</h5>
+                                <table class="table tablaLigas table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>nombre</th>
+                                            <th>aceptar / rechazar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>nombre</td>
+                                            <td>aceptar / rechazar</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div>
+                                <h5>Equipos aceptados</h5>
+                            </div>
+                            <div>
+                                <form method="post">
+                                    <div>
+                                        <label>Fecha I</label>
+                                        <input type="datetime" />
+                                    </div>
+                                    <div>
+                                        <label>Fecha F</label>
+                                        <input type="datetime" />
+                                    </div>
+                                    <div>
+                                        <label>Numero de equipos</label>
+                                        <input type="number" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="misligas">
+            <div>
+                <h2>Equipos de Usuario</h2>
+            </div>
+            <div class="divfiltros">
+                <h4>Filtrar por opciones</h4>
+                <div>
+                    <input type="checkbox" name="filtros"/>
+                    <span>Terminados</span>
+                </div>
+                <div>
+                    <input type="checkbox" name="filtros"/>
+                    <span>activo</span>
+                </div>
+                <div>
+                    <input type="checkbox" name="filtros"/>
+                    <span>pendientre</span>
+                </div>
+            </div>
+            <button type="button" id="toggleEditor" class="btnReg mx-1" style="width:120px">Filtrar</button>
+            <div style="padding:20px ;background-color:#242424; display:none" id="crearEquipo">
+
+                <form method="post">
+                    <label class="labelEquipo">Nombre de Equipo</label>
+                    <input type="text" name="nombreEquipo" class="inputEquipo form-control" />
+                    <label class="labelEquipo">Jugador 2</label>
+                    <input type="text" name="jugador2" class="inputEquipo form-control" />
+                    <label class="labelEquipo">Jugador 3</label>
+                    <input type="text" name="jugador3" class="inputEquipo form-control" />
+                    <button type="submit" class="btn btn-success" style="width:120px; height:40px; margin-top:20px">Crear</button>
+                </form>
+
+            </div>
+            <script>
+                $(document).ready(function () {
+                    $('#toggleEditor').click(function () {
+                        $('#crearEquipo').toggle('fast');
+                    })
+                })
+            </script>
+    </div>
+</div>
+
