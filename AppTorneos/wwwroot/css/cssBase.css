@@ -12,6 +12,7 @@
     padding: 0;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    font-weight: 500;
 }
 
 html {
@@ -21,6 +22,29 @@ html {
 
 body {
     margin-bottom: 60px;
+}
+
+.btnReg {
+    border: none;
+    padding: 10px;
+    border-radius: 100px;
+    width: 12%;
+    color: black;
+    background-color: #FFBD21;
+    font-weight: 500;
+    width: 8em;
+    margin: 1em;
+    font-weight:600 !important;
+}
+
+.btnCancelar {
+    background-color: #F01919 !important;
+    color: black;
+}
+
+.btnVerdes {
+    background-color: #27A677 !important;
+    color: black;
 }
 
 /*MENU*/
@@ -351,22 +375,6 @@ body {
     justify-content:center;
 }
 
-.btnReg {
-    border: none;
-    padding: 10px;
-    border-radius: 100px;
-    width: 12%;
-    color: black;
-    background-color: #FFBD21;
-    font-weight: 500;
-    width: 8em;
-    margin: 1em;
-}
-
-#btnCancelar {
-    background-color: #F01919 !important;
-}
-
 .estilomodal {
     background-color: #494848;
     color: #E8E8E8;
@@ -560,4 +568,12 @@ h1 {
 
 .elmodal{
     display:block;
+}
+
+.inputForm {
+    width: 20%;
+    margin: 10px;
+    text-align: center;
+    border-radius: 15px;
+    color: black;
 }

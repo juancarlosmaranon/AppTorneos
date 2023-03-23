@@ -7,16 +7,17 @@
 
 <div class="wrapper">
     <h1 class="tituloinicio">Mis equipos</h1>
-    <hr style="width:50%;margin:auto;color:black; border-top:2px solid"/>
-    <div id="divequipos" class="botonera"> 
-    
+    <hr style="width:50%;margin:auto;color:black; border-top:2px solid" />
+    <div id="divequipos" class="botonera">
+
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <div id="invitacionesequipos">        
+        <div id="invitacionesequipos">
             <div>
                 <h2>Invitaciones a equipos</h2>
             </div>
             <div class="divtabla tablascroll">
-                @if(pendientes){
+                @if (pendientes)
+                {
                     <table class="table">
                         <tr class="thead">
                             <th>Nombre</th>
@@ -25,8 +26,10 @@
                         <tbody class="tbody">
                             @foreach (Equipo eq in Model)
                             {
-                                @if(eq.Jugador1 != usuario.IdUsuario){
-                                    @if(eq.Jugador2 == usuario.IdUsuario && eq.ConfirmJug2 == -1){
+                                @if (eq.Jugador1 != usuario.IdUsuario)
+                                {
+                                    @if (eq.Jugador2 == usuario.IdUsuario && eq.ConfirmJug2 == -1)
+                                    {
                                         <tr>
                                             <td class="tdEquipos">@eq.Nombre</td>
                                             <td class="tdEquipos">
@@ -57,7 +60,7 @@
             </div>
             <button type="button" id="toggleEditor" class="btnReg mx-1" style="width:120px" @*onclick="location.href='@Url.Action("CrearEquipo", "Equipos", new {})'"*@>Crear equipo</button>
             <div style="padding:20px ;background-color:#242424; display:none" id="crearEquipo">
-                
+
                 <form method="post">
                     <label class="labelEquipo">Nombre de Equipo</label>
                     <input type="text" name="nombreEquipo" class="inputEquipo form-control" />
@@ -65,19 +68,19 @@
                     <input type="text" name="jugador2" class="inputEquipo form-control" />
                     <label class="labelEquipo">Jugador 3</label>
                     <input type="text" name="jugador3" class="inputEquipo form-control" />
-                    <button type="submit" class="btn btn-success" style="width:120px; height:40px; margin-top:20px">Crear</button>
+                    <button type="submit" class="btn btnReg btnVerdes" style="width:120px; height:40px; margin-top:20px">Crear</button>
                 </form>
-                
+
             </div>
             <script>
-                $(document).ready(function() {
-                    $('#toggleEditor').click(function() {
+                $(document).ready(function () {
+                    $('#toggleEditor').click(function () {
                         $('#crearEquipo').toggle('fast');
                     })
                 })
             </script>
         </div>
-        <div id="misequipos">     
+        <div id="misequipos">
             <div>
                 <h2>Equipos de Usuario</h2>
             </div>
@@ -98,8 +101,8 @@
                                     <td class="tdEquipos">
                                         @if (eq.ConfirmJug2 == 1 && eq.ConfirmJug3 == 1)
                                         {
-                                            <button type="button" class="btn btnReg toggleEditor2" onclick="verDetalles("@eq")">
-                                                Detalles 
+                                            <button type="button" class="btn btnReg toggleEditor2" onclick="verDetalles(" @eq")">
+                                                Detalles
                                             </button>
                                         }
                                         else
@@ -110,7 +113,7 @@
                                 </tr>
                             }
                         }
-                        
+
                     </tbody>
                 </table>
             </div>
@@ -144,8 +147,8 @@
                 </table>
             </div>
             <script>
-                $(document).ready(function() {
-                    $('.toggleEditor2').click(function() {
+                $(document).ready(function () {
+                    $('.toggleEditor2').click(function () {
                         $('#detallesEquipo').toggle('fast');
                     })
                 })
