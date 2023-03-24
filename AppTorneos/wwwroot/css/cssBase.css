@@ -48,7 +48,6 @@ body {
 }
 
 /*MENU*/
-
 .navbar {
     background-color: #FF6A25;
     height: 100px;
@@ -389,6 +388,20 @@ body {
 .modalBody {
     background-color: #434242;
     border-radius: 20px;
+}
+
+.modal-header{
+    border-bottom:0px !important;
+}
+
+.modal-footer{
+    border-top:0px !important;
+}
+
+.footmodal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {

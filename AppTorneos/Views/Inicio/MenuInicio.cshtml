@@ -1,58 +1,64 @@
-﻿<div class="wrapper" >
+﻿<div class="wrapper">
     <h1 class="tituloinicio">Inicio</h1>
-    <hr style="width:50%;margin:auto;color:black; border-top:2px solid"/>
+    <hr style="width:50%;margin:auto;color:black; border-top:2px solid" />
     <div class="cols">
         <div class="col" ontouchstart="this.classList.toggle('hover');">
             <div class="container">
                 <div class="front" style="background-image: url(/images/bsComoFunciona.jpg)">
                     <div class="inner">
                         <p>Como funciona?</p>
-                        <span>BS Tournament</span>
+                        <span>BS LEAGUE</span>
                     </div>
                 </div>
                 <div class="back">
                     <div class="inner">
-                        <p>Juega torneos creando tu mismo la modalidad del torneo y tu equipo.</p>
+                        <p>Juega competitivo en Ligas con tu propio equipo.</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col" ontouchstart="this.classList.toggle('hover');">
-            <div class="container">
-                <div class="front" style="background-image: url(/images/bsEquipos.png)">
-                    <div class="inner">
-                        <p>Equipos</p>
-                        <span>BS Tournament</span>
+            <a asp-controller="Equipos" asp-action="MisEquipos">
+                <div class="container">
+                    <div class="front" style="background-image: url(/images/bsEquipos.png)">
+                        <div class="inner">
+                            <p>Equipos</p>
+                            <span>BS LEAGUE</span>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div class="inner">
+                            <p>Crea tu propio equipo y compite con él!</p>
+                        </div>
                     </div>
                 </div>
-                <div class="back">
-                    <div class="inner">
-                        <p>Crea tu propio equipo y compite con él!</p>
-                    </div>
-                </div>
-            </div>
+            </a>
         </div>
+
         <div class="col" ontouchstart="this.classList.toggle('hover');">
-            <div class="container">
-                <div class="front" style="background-image: url(/images/liga.jpg)">
-                    <div class="inner">
-                        <p>Ligas</p>
-                        <span>BS Tournament</span>
+            <a asp-controller="Liga" asp-action="MenuLigas">
+                <div class="container">
+                    <div class="front" style="background-image: url(/images/liga.jpg)">
+                        <div class="inner">
+                            <p>Ligas</p>
+                            <span>BS LEAGUE</span>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div class="inner">
+                            <p>Unete o crea tus propias Ligas para luchar contra tus amigos o con otras personas.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="back">
-                    <div class="inner">
-                        <p>Unete o crea tus propias Ligas para luchar contra tus amigos o con otras personas.</p>
-                    </div>
-                </div>
-            </div>
+            </a>
         </div>
+
         <div class="col" ontouchstart="this.classList.toggle('hover');">
             <div class="container">
                 <div class="front" style="background-image: url(/images/bsCampeon.jpg)">
                     <div class="inner">
                         <p>Resultados</p>
-                        <span>BS Tournament</span>
+                        <span>BS LEAGUE</span>
                     </div>
                 </div>
                 <div class="back">
@@ -64,4 +70,3 @@
         </div>
     </div>
 </div>
-        

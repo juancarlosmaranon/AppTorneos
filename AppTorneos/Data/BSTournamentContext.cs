@@ -13,5 +13,7 @@ namespace AppTorneos.Data
         public DbSet<Equipo> Equipos { get; set; }
 
         public DbSet<Liga> Ligas { get; set; }
+
+        public DbSet<EquipoLiga> EquiposLiga { get; set; }
     }
 }

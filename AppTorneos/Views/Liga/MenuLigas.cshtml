@@ -1,5 +1,20 @@
-﻿<div class="wrapper">
-    <h1 class="tituloinicio">Mis equipos</h1>
+﻿@model List<Liga>
+
+@{
+    List<Equipo> equiposuser;
+
+    if (ViewData["EQUIPOSUSER"] == null)
+    {
+        equiposuser = new List<Equipo>();
+    }
+    else
+    {
+        equiposuser = ViewData["EQUIPOSUSER"] as List<Equipo>;
+    }
+
+}
+<div class="wrapper">
+    <h1 class="tituloinicio">Ligas</h1>
     <hr style="width:50%;margin:auto;color:black; border-top:2px solid" />
     <div id="divequipos" class="botonera">
 
@@ -10,8 +25,11 @@
             </div>
             <div class="divtabla">
                 <div class="buscador">
-                    <input type="text" class="inputLiga" />
-                    <button type="button" class="btn btnReg btnLiga">Buscar Liga</button>
+                    <form method="post">
+                        <input type="hidden" name="accion" value="BuscarLiga" />
+                        <input type="text" name="nombre" class="inputLiga" />
+                        <button type="submit" class="btn btnReg btnLiga">Buscar Liga</button>
+                    </form>
                 </div>
                 <h2>Ligas</h2>
                 <div class="tablascroll2">
@@ -21,88 +39,14 @@
                             <th>Activo</th>
                             <th>deta</th>
                         </tr>
-                        <tbody class="tbody">
-                            <tr class="thead trMenuLigas">
-                                <td>Nombre</td>
-                                <td>Activo</td>
-                                <td>
-                                    <button type="button" class="btn btnReg btnLiga" data-bs-toggle="modal" data-bs-target="#myModal">
-                                        Open modal
-                                    </button>
-                                </td>
-                            </tr>
+                        <tbody id="tbodyligas" class="tbody">
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="modal fade" id="myModal">
                 <div class="modal-dialog modal-xl">
-                    <div class="modal-content modalBody">
-                        <form method="post">
-                            <input type="hidden" name="accion" value="iniciarLiga" />
-                            <!-- Modal Header -->
-                            <div class="modal-header">
-                                <h4 class="modal-title">Nombre de la Liga</h4>
-                                <button type="button" class="btn-close btnCancelar" data-bs-dismiss="modal"></button>
-                            </div>
-                            <hr style="width:50%;margin:auto;color:black; border-top:2px solid" />
-                            <!-- Modal body -->
-                            <div class="modal-body">
-                                <div class="elmodal">
-                                    <h5>Equipos solicitantres</h5>
-                                    <table class="table">
-                                        <tr class="thead">
-                                            <th>Nombre</th>
-                                            <th>Aceptar / Rechazar</th>
-                                        </tr>
-                                        <tbody class="tbody">
-                                            <tr class="thead trMenuLigas">
-                                                <td class="tdLigas">Nombre</td>
-                                                <td class="tdLigas">
-                                                    <a asp-controller="" asp-action="" asp-route-idequipo="" class="btn btnReg btnVerdes">Aceptar</a>
-                                                    <a asp-controller="" asp-action="" asp-route-idequipo="" class="btn btnReg btnCancelar">Denegar</a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div style="margin-top:10px; width:100%;">
-                                    <h5>Equipos aceptados</h5>
-                                    <table class="table tableAceptados">
-                                        <tr class="thead">
-                                            <th>Nombre Equipo</th>
-                                            <th>Eliminar Equipo</th>
-                                        </tr>
-                                        <tbody class="tbody">
-                                            <tr class="thead trMenuLigas">
-                                                <td>yeye</td>
-                                                <td><a asp-controller="" asp-action="" asp-route-idequipo="" class="btn btnReg btnCancelar">Eliminar</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div style="margin-top:20px">
-                                    <div>
-                                        <label>Fecha Inicio</label><br />
-                                        <input class="inputForm" type="datetime" />
-                                    </div>
-                                    <div>
-                                        <label>Fecha Fin</label><br />
-                                        <input class="inputForm" type="datetime" />
-                                    </div>
-                                    <div>
-                                        <label>Numero de equipos</label><br />
-                                        <input class="inputForm" type="number" />
-                                    </div>
-                                </div>
-                            </div>
-                            <hr style="width:50%;margin:auto;color:black; border-top:2px solid" />
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btnReg btn-success btnVerdes" style="width:120px; height:40px; margin-top:20px">Crear</button>
-                                <button type="button" class="btn btnReg btnCancelar" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </form>
+                    <div class="modal-content modalBody" id="modalAdmin">
                     </div>
                 </div>
             </div>
@@ -112,19 +56,23 @@
                 <h2>Filtrar por opciones</h2>
             </div>
             <div class="divfiltros">
-                <div class="losradios">
-                    <span>Terminadas</span>
-                    <input type="radio" name="filtros" class="radio" />
-                </div>
-                <div class="losradios">
-                    <span>Activas</span>
-                    <input type="radio" name="filtros" class="radio" />
-                </div>
-                <div class="losradios">
-                    <span>Pendiente</span>
-                    <input type="radio" name="filtros" class="radio" />
-                </div>
-                <button type="button" class="btn btnReg btnLiga mx-1" style="width:120px">Filtrar</button>
+                @if (equiposuser.Count > 0)
+                {
+                    <select id="equiposelec" onchange="cambiarInputIDEq()">
+                        @foreach (Equipo item in equiposuser)
+                        {
+                            @if (item.ConfirmJug2 == 1 && item.ConfirmJug3 == 1)
+                            {
+                                <option value="@item.IdEquipo">@item.Nombre</option>
+                            }
+                        }
+                    </select>
+                }
+                else
+                {
+                    <p>No hay equipos disponibles</p>
+                }
+
             </div>
 
             <button type="button" id="toggleEditor" class="btn btnReg btnVerdes mx-1" style="margin-top:60px">Crear Liga</button>
@@ -135,16 +83,40 @@
                     <label class="labelEquipo">Nombre de Liga</label>
                     <input type="hidden" name="accion" value="CrearLiga" />
                     <input type="text" name="nombre" class="inputEquipo form-control" />
+                    <input id="crearligateam" type="hidden" value="0" name="idequipo" />
                     <button type="submit" class="btnReg btnVerdes">Crear</button>
                 </form>
 
             </div>
+
+            <input id="teamhidden" type="hidden" value="0" name="idequipo" />
+
             <script>
-                $(document).ready(function () {
-                    $('#toggleEditor').click(function () {
-                        $('#crearLiga').toggle('fast');
+                $(document).ready(function() {
+                    $('#toggleEditor').click(function() {
+                        $('#crearLiga').toggle('fast')
                     })
+                    cambiarInputIDEq();
+                    cargaTBody();
                 })
+
+                function cargaModalAdmin(idliga) {
+                    $("#modalAdmin").load("/Liga/_MenuAdminLiga?idliga=" + idliga);
+                }
+
+                function cargaTBody() {
+                    $("#tbodyligas").load("/Liga/_TBodyLigas?idequipo=" + $("#teamhidden").val());
+                }
+
+                function cambiarInputIDEq() {
+                    $("#crearligateam").val($("#equiposelec").val())
+                    $("#teamhidden").val($("#equiposelec").val())
+                }
+
+                function enviarSolicitud(idliga) {
+                    window.location.href = "/Liga/EnvioSolicitud?idliga=" + idliga + "&idequipo=" + $("#teamhidden").val()
+                    console.log(idliga)
+                }
             </script>
 
         </div>
