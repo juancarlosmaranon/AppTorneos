@@ -38,7 +38,7 @@ namespace AppTorneos.Repositories
             return this.context.Ligas.Where(x => x.Nombre.Contains(nombre)).AsEnumerable().ToList();
         }
 
-        public async Task SolicitarAcceso(int idequipo, int idliga)
+        public async Task SolicitarAcceso(int idliga, int idequipo)
         {
             int id = 0;
             if (this.context.EquiposLiga.Count() == 0)
@@ -140,6 +140,16 @@ namespace AppTorneos.Repositories
                             select datos;
 
             return consulta.ToList();
+        }
+
+        public async Task EmpezarLiga(int idliga, DateTime fechainicio)
+        {
+            Liga liga = this.context.Ligas.Where(x => x.IdLiga == idliga).AsEnumerable().FirstOrDefault();
+            liga.FechaInicio = fechainicio;
+            liga.Estado = 0;
+
+            //METODO PARA GENERAR LAS PARTIDAS DE TODOS LOS EQUIPOS
+            await this.context.SaveChangesAsync();
         }
 
 

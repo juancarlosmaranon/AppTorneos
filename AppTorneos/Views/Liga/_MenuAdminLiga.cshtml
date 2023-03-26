@@ -6,7 +6,8 @@
     List<Equipo> equipos;
     User usuario = Context.Session.GetObject<User>("USUARIO");
 
-    if (Model == null){
+    if (Model == null)
+    {
         equipoliga = new List<EquipoLiga>();
     }
     else
@@ -14,18 +15,23 @@
         equipoliga = Model;
     }
 
-    if (ViewData["EQUIPOS"] == null){
+    if (ViewData["EQUIPOS"] == null)
+    {
         equipos = new List<Equipo>();
     }
     else
     {
         equipos = ViewData["EQUIPOS"] as List<Equipo>;
     }
-    
+
+    int numeroeq = equipoliga.Where(x => x.Inscrito == true).Count();
+
 }
 
-<form method="post">
+
+<form method="post" id="formInicioLiga">
     <input type="hidden" name="accion" value="iniciarLiga" />
+    <input type="hidden" name="idliga" value="@liga.IdLiga" />
     <!-- Modal Header -->
     <div class="modal-header">
         <h4 class="modal-title">@liga.Nombre</h4>
@@ -89,22 +95,19 @@
         <div style="margin-top:20px">
             <div>
                 <label>Fecha Inicio</label><br />
-                <input class="inputForm" type="datetime" />
-            </div>
-            <div>
-                <label>Fecha Fin</label><br />
-                <input class="inputForm" type="datetime" />
+                <input class="inputForm" type="date" name="fechainicio"/>
             </div>
             <div>
                 <label>Numero de equipos</label><br />
-                <input class="inputForm" type="number" />
+                <input class="inputForm" type="hidden" name="numequipos" value="@numeroeq"/>
+                <input class="inputForm" type="number" disabled value="@numeroeq"/>
             </div>
         </div>
     </div>
     <hr style="width:50%;margin:auto;color:black; border-top:2px solid" />
     <!-- Modal footer -->
     <div class="modal-footer footmodal">
-        <button type="submit" class="btn btnReg btnVerdes elemetStyle" style="width:120px; height:40px; margin-top:20px">Crear</button>
+        <button type="button" onclick="compruebaEquipos(@numeroeq)" class="btn btnReg btnVerdes elemetStyle" style="width:120px; height:40px; margin-top:20px">Crear</button>
         <button type="button" class="btn btnReg btnCancelar" data-bs-dismiss="modal">Cancelar</button>
     </div>
 </form>

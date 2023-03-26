@@ -23,15 +23,22 @@ namespace AppTorneos.Controllers
             return View(this.repo.GetLigas());
         }
         [HttpPost]
-        public async Task <IActionResult> MenuLigas(string accion, string nombre, int idequipo) 
+        public async Task <IActionResult> MenuLigas(string accion, string nombre, int idequipo, DateTime fechainicio, int numequipos, int idliga) 
         {
             if(accion== "CrearLiga")
             {
                 await this.repo.CrearLiga(nombre, HttpContext.Session.GetObject<User>("USUARIO").IdUsuario, idequipo);
+                return RedirectToAction("MenuLigas","Liga");
 
             }else if(accion == "BuscarLiga")
             {
                 return View(this.repo.FiltrarLigaNombre(nombre));
+            }
+            else if (accion == "iniciarLiga")
+            {
+
+                await this.repo.EmpezarLiga(idliga,fechainicio);
+                return RedirectToAction("MenuLigas", "Liga");
             }
 
             return View(this.repo.GetLigas());

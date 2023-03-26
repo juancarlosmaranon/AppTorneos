@@ -22,7 +22,7 @@ namespace AppTorneos.Models
         [Column("Estado")]
         public int Estado { get; set; }
 
-        [Column("creador")]
+        [Column("Creador")]
         public int Creador { get; set; }
     }
 }

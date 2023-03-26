@@ -474,6 +474,16 @@ h1 {
 
 /*LIGAS*/
 
+#equiposelec {
+    width: 200px;
+    background-color: #4F4E4E;
+    color: white;
+    border-radius: 50px;
+    border-color: #4F4E4E;
+    text-align:center;
+    margin-top:10px;
+}
+
 .btnLiga {
     background-color: #FFBD21 !important;
 }
@@ -571,7 +581,7 @@ h1 {
 }
 
 #crearLiga {
-    margin-top: 20px;
+    margin-top: 50px;
     border-radius:50px;
 }
 
