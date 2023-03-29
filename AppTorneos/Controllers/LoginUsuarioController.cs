@@ -3,16 +3,19 @@ using AppTorneos.Models;
 using System.Text;
 using AppTorneos.Repositories;
 using AppTorneos.Extensions;
+using AppTorneos.Helpers;
 
 namespace AppTorneos.Controllers
 {
     public class LoginUsuarioController : Controller
     {
         private RepositoryUsuarios repo;
+        private HelperApiBrawl helper;
 
-        public LoginUsuarioController(RepositoryUsuarios repo)
+        public LoginUsuarioController(RepositoryUsuarios repo, HelperApiBrawl helper)
         {
             this.repo = repo;
+            this.helper = helper;
         }
 
 
@@ -22,13 +25,21 @@ namespace AppTorneos.Controllers
         }
 
         [HttpPost]
-        public IActionResult InicioPagina(string accion, string nombre, string usuariotag, string email, string contrasenia)
+        public async Task<IActionResult> InicioPagina(string accion, string nombre, string usuariotag, string email, string contrasenia)
         {
             if (accion == "registro")
             {
                 //AQUI HAZ EL REGISTRO
                 ViewData["MENSAJE"] = "INIASTE REGISTRO";
-                this.repo.InsertarUsuario( usuariotag, nombre, email, contrasenia);
+                if(await helper.Prueba(usuariotag) == false)
+                {
+                    ViewData["ERROR"] = "Error no existe el usuario";
+                }
+                else
+                {
+                    this.repo.InsertarUsuario(usuariotag, nombre, email, contrasenia);
+                }
+
             }else if (accion == "iniciosesion")
             {
                 User usuario = this.repo.LoginUsuarios(email, contrasenia);

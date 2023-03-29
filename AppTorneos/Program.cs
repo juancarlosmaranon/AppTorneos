@@ -1,4 +1,5 @@
 using AppTorneos.Data;
+using AppTorneos.Helpers;
 using AppTorneos.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,7 @@ string connectionString =
 builder.Services.AddTransient<RepositoryUsuarios>();
 builder.Services.AddTransient<RepositoryEquipos>();
 builder.Services.AddTransient<RepositoryLigas>();
+builder.Services.AddSingleton<HelperApiBrawl>();
 builder.Services.AddDbContext<BSTournamentContext>
     (options => options.UseSqlServer(connectionString));
 
