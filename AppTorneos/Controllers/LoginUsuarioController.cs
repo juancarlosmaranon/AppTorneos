@@ -4,6 +4,7 @@ using System.Text;
 using AppTorneos.Repositories;
 using AppTorneos.Extensions;
 using AppTorneos.Helpers;
+using Newtonsoft.Json.Linq;
 
 namespace AppTorneos.Controllers
 {
@@ -31,7 +32,7 @@ namespace AppTorneos.Controllers
             {
                 //AQUI HAZ EL REGISTRO
                 ViewData["MENSAJE"] = "INIASTE REGISTRO";
-                if(await helper.Prueba(usuariotag) == false)
+                if(await helper.TokenApi(usuariotag) == false)
                 {
                     ViewData["ERROR"] = "Error no existe el usuario";
                 }
@@ -67,6 +68,34 @@ namespace AppTorneos.Controllers
         {
             HttpContext.Session.Remove("USUARIO");
             return RedirectToAction("InicioPagina");
+        }
+
+        public async Task<IActionResult> PerfilUsuario()
+        {
+            Perfil perf = new Perfil();
+
+            User usu = HttpContext.Session.GetObject<User>("USUARIO");
+            if (usu != null)
+            {
+                JObject jsonusu = await this.helper.InfoUsuarioXTag(usu.UsuarioTag);
+
+
+                perf.Tag = jsonusu.Values().AsEnumerable().ToList().Where(x => x.Path == "tag" && x.Type.ToString() == "String").FirstOrDefault().ToString();
+
+                perf.Nombre = jsonusu.Values().AsEnumerable().ToList().Where(x => x.Path == "name").FirstOrDefault().ToString();
+                perf.Trofeos = int.Parse(jsonusu.Values().AsEnumerable().ToList().Where(x => x.Path == "trophies").FirstOrDefault().ToString());
+                perf.MaximoTr = int.Parse(jsonusu.Values().AsEnumerable().ToList().Where(x => x.Path == "highestTrophies").FirstOrDefault().ToString());
+                perf.VictoriasTotales = int.Parse(jsonusu.Values().AsEnumerable().ToList().Where(x => x.Path == "3vs3Victories").FirstOrDefault().ToString())
+                    + int.Parse(jsonusu.Values().AsEnumerable().ToList().Where(x => x.Path == "soloVictories").FirstOrDefault().ToString())
+                    + int.Parse(jsonusu.Values().AsEnumerable().ToList().Where(x => x.Path == "duoVictories").FirstOrDefault().ToString());
+
+                return View(perf);
+            }
+            else
+            {
+                return RedirectToAction("InicioPagina", "LoginUsuario");
+            }
+            
         }
     }
 }
